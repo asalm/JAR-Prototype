@@ -41,12 +41,12 @@ public class CharacterMovement : MonoBehaviour {
         // Move Character Controller
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (transform.position.y <= 0) //Fall des Character
+        if (transform.position.y <= -10) //Fall des Character
             spawn();
 	}
 
     void spawn() // Character spawnt zum Startpunkt wenn er fällt
     {
-        transform.position = new Vector3(-5.5f, 4.7f, 2);
+        transform.position = new Vector3(-5.5f, 18f, -1.3f);
     }
 }
