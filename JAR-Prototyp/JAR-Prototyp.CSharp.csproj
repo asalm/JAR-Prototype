@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\CollisionPrism.cs" />
     <Compile Include="Assets\Scripts\DeactivateRenderer.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\ObstacleMovement.cs" />
     <Compile Include="Assets\Scripts\Trapdoor.cs" />
   </ItemGroup>

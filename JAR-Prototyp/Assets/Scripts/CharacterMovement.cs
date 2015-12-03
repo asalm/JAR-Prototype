@@ -7,7 +7,6 @@ public class CharacterMovement : MonoBehaviour {
     public float gravity = 1.0F;
     public float jumpForce = 23.0F;
     private Vector3 moveDirection = Vector3.zero;
-    private GameObject Enemy;
 
     //Assign CharacterController to Script in Inspector plx!
     public CharacterController controller;
@@ -46,7 +45,7 @@ public class CharacterMovement : MonoBehaviour {
             spawn();
 	}
 
-    //Kollision with Enemy
+    //Collision with Enemy
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TopCollider"))
@@ -55,7 +54,7 @@ public class CharacterMovement : MonoBehaviour {
             other.gameObject.SetActive(false);
            
         }
-        else if(other.gameObject.CompareTag("Enemy"))
+        else if(other.gameObject.CompareTag("SideCollider"))
 
         {
             spawn();
