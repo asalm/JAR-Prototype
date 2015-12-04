@@ -9,11 +9,21 @@ public class ObstacleMovement : MonoBehaviour
     public bool turn = false;
     public int axis = 3;
     float posX, posY, posZ;
-    float moveAxis;
+	float moveAxis;
 
     // Use this for initialization
     void Start()
-    {
+	{
+		if (axis == 1) {
+			moveAxis = transform.position.x;
+		} else if (axis == 2) {
+			moveAxis = transform.position.y;
+		} else if(axis == 3){
+			moveAxis = transform.position.z;
+		}
+
+
+
         float change;
         if (border1 > border2) // swap borders if User fucked it up
         {
@@ -27,11 +37,10 @@ public class ObstacleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        posY = transform.position.y;
-        posX = transform.position.x;
-        posZ = transform.position.z;
-
+		posY = transform.position.y;
+		posX = transform.position.x;
+		posZ = transform.position.z;
+	
         if (moveAxis >= border1 && turn == false)
         {
             moveAxis -= speed * Time.deltaTime;
@@ -48,8 +57,7 @@ public class ObstacleMovement : MonoBehaviour
         }
         if (moveAxis < border1)
             turn = true;
-
-        
+		 
 
         if ( axis == 1)
             transform.position = new Vector3(moveAxis, posY, posZ);

@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CharacterMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObstacleMovement.cs">
     <Files>
-      <File FileName="Assets/CharacterMovement.cs" Line="44" Column="39" />
+      <File FileName="Assets\Scripts\CharacterMovement.cs" Line="52" Column="10" />
+      <File FileName="Assets\Scripts\ObstacleMovement.cs" Line="53" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

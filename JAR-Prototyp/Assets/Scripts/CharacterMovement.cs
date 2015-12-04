@@ -3,9 +3,9 @@ using System.Collections;
 
 public class CharacterMovement : MonoBehaviour {
 
-    public float speed = 6.0F;
-    public float gravity = 1.0F;
-    public float jumpForce = 23.0F;
+    public float speed;
+    public float gravity;
+    public float jumpForce;
     private Vector3 moveDirection = Vector3.zero;
 
     //Assign CharacterController to Script in Inspector plx!
