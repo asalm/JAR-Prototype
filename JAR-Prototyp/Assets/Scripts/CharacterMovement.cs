@@ -6,7 +6,12 @@ public class CharacterMovement : MonoBehaviour {
     public float speed;
     public float gravity;
     public float jumpForce;
+    public float smoothing;
     private Vector3 moveDirection = Vector3.zero;
+
+   
+    private float smoothHorizontalMovement;
+    private float forwardSpeedV;
 
     //Assign CharacterController to Script in Inspector plx!
     public CharacterController controller;
@@ -18,20 +23,29 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float faceDirection = Input.GetAxisRaw("Horizontal");
-        if(controller.isGrounded)
+
+        //Smoothing 
+
+        smoothHorizontalMovement = Mathf.SmoothDamp(smoothHorizontalMovement, Input.GetAxisRaw("Horizontal") * speed, ref forwardSpeedV, smoothing );
+
+        moveDirection = new Vector3(0, moveDirection.y, smoothHorizontalMovement);
+
+        if (!controller.isGrounded)
+            //moveDirection -= new Vector3(0, gravity * Time.deltaTime, 0);
+            moveDirection.y -= gravity * Time.deltaTime;   
+        else
+            moveDirection.y = 0;
+
+        if(controller.isGrounded && Input.GetButtonDown("Jump"))
         {
-            if (Input.GetKeyDown("space"))
-            {
-                moveDirection = new Vector3(0, jumpForce * Time.deltaTime, Input.GetAxis("Horizontal"));
-            } else
-            {
-                moveDirection = new Vector3(0, 0, Input.GetAxis("Horizontal"));
-            }
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
+            moveDirection.y = jumpForce;
         }
+    
+        //moveDirection = transform.TransformDirection(moveDirection);         
+
         //PlayerRotation (funkzt aber noch nicht :( )
+        float faceDirection = Input.GetAxisRaw("Horizontal");
+
         if (faceDirection != 0)
         {
             transform.rotation = new Quaternion(0, 0, 0,0);
