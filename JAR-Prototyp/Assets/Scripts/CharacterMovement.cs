@@ -8,8 +8,8 @@ public class CharacterMovement : MonoBehaviour {
     public float jumpForce;
     public float smoothing;
     private Vector3 moveDirection = Vector3.zero;
+	private bool enemyCollision = false;
 
-   
     private float smoothHorizontalMovement;
     private float forwardSpeedV;
 
@@ -55,6 +55,11 @@ public class CharacterMovement : MonoBehaviour {
         // Move Character Controller
         controller.Move(moveDirection * Time.deltaTime);
 
+		//Bounce off Enemy
+		if (enemyCollision) {
+			moveDirection.y = jumpForce/2;
+			enemyCollision = false;
+		}
         if (transform.position.y <= -10) //Fall des Character
             spawn();
 	}
@@ -66,7 +71,7 @@ public class CharacterMovement : MonoBehaviour {
         {
             GameObject.Find("Enemy").SetActive(false);
             other.gameObject.SetActive(false);
-           
+			enemyCollision = true;
         }
         else if(other.gameObject.CompareTag("SideCollider"))
 
